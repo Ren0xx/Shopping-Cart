@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 import Shop from "./Shop";
 import NavigationBar from "./NavigationBar";
-import '../styles/App.css'
 
 const RouteSwitch = () => {
     return (

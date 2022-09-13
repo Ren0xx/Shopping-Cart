@@ -1,0 +1,27 @@
+/* .Routes{
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+ */
+.nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2em;
+    height: 650px;
+    margin-right: 10em;
+}
+.card{
+    text-align: center;
+    width: 250px;
+    padding: 5px;
+    gap: 1.5em;
+}
