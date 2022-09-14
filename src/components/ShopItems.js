@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/style.css";
 import Form from "react-bootstrap/Form";
@@ -15,19 +15,30 @@ const ShopItems = (props) => {
                         <h5>{item.price}</h5>
 
                         <Form>
-                            <Form.Control
-                                size='sm'
-                                name='price'
-                                placeholder='Enter Amount of Items'
-                                type='number'
-                                min='0'
-                                defaultValue={item.quantity}
-                            />
-                            <Form.Text muted>
-                                Choose how many items you want to buy.
-                            </Form.Text>
+                            <Form.Group>
+                                <Form.Control
+                                    size='sm'
+                                    name={item.name}
+                                    placeholder='Enter Amount of Items'
+                                    type='number'
+                                    min='0'
+                                    quantity={item.quantity}
+                                    defaultValue='0'
+                                    onChange={(e) => {
+                                        item.quantity = e.target.value;
+                                    }}
+                                />
+                                <Form.Text muted>
+                                    Choose how many items you want to buy.
+                                </Form.Text>
+                            </Form.Group>
+                            <Button
+                                value={item.quantity}
+                                onClick={() => props.addToCart(item, item.quantity)}
+                                size='sm'>
+                                Add to Cart
+                            </Button>
                         </Form>
-                        <Button size='sm'>Add to Cart</Button>
                     </div>
                 );
             })}

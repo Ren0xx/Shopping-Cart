@@ -4,7 +4,7 @@ import ShopItems from "./ShopItems";
 
 const Shop = () => {
     const [cart, setCart] = useState([]);
-    const items = [
+    const [items, setItems] = useState([
         {
             name: "hoodie",
             img: "#",
@@ -54,11 +54,19 @@ const Shop = () => {
             price: "25$",
             quantity: 0,
         },
-    ];
+    ]);
+
+    // TODO: Make this
+    const addToCart = (newItem, quantity) => {
+        if (quantity <= 0) return;
+        for (let i = 0; i < quantity; i++) {
+            setCart(cart => [...cart, newItem]);
+        }
+    };
     return (
         <>
             <ShoppingCart cart={cart} setCart={setCart} />
-            <ShopItems items={items} />
+            <ShopItems items={items} addToCart={addToCart} />
         </>
     );
 };
