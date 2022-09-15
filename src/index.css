@@ -4,22 +4,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
 }
 #root{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
-  
+  background-color: #212529;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 .cart{
-  position: fixed;
-  top: 1em;
-  right: 15em;
+  position: relative;
+  margin-left: auto;
+  z-index: 2000;
 }

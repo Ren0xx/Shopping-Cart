@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/style.css";
 import Form from "react-bootstrap/Form";
@@ -18,12 +18,10 @@ const ShopItems = (props) => {
                             <Form.Group>
                                 <Form.Control
                                     size='sm'
-                                    name={item.name}
                                     placeholder='Enter Amount of Items'
                                     type='number'
                                     min='0'
                                     quantity={item.quantity}
-                                    defaultValue='0'
                                     onChange={(e) => {
                                         item.quantity = e.target.value;
                                     }}
