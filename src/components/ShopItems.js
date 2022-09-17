@@ -25,6 +25,9 @@ const ShopItems = (props) => {
                                     onChange={(e) => {
                                         item.quantity = e.target.value;
                                     }}
+                                    onFocus={(e) => {
+                                        item.quantity = e.target.value;
+                                    }}
                                 />
                                 <Form.Text muted>
                                     Choose how many items you want to buy.

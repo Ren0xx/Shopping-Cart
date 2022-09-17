@@ -1,11 +1,13 @@
-/* .Routes{
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+
+.cart{
+    position: fixed;
+    top: 20px;
+    right: 45px;
+    color: #9a9c9e;
 }
- */
+.cart  *{
+    font-size: 1.5em;
+}
 .navBar{
     width: 100%;
 }
