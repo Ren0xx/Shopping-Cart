@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const ShoppingCartIcon = (props) => {
     return (
-        <Link to='/shop/cart'>
+        <Link to='/cart'>
             <div className='cart'>
                 <h1>
                     <svg

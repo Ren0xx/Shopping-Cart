@@ -4,7 +4,7 @@ import "../styles/style.css"
 
 const ShoppingCart = (props) => {
     return (
-        <div className="cart-item">
+        <div className="text-light">
             {props.cart.map((cartItem, index) => {
                 return (
                     <div key={index}>

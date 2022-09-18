@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import Homepage from "./Homepage";
 import Shop from "./Shop";
 import ShoppingCart from "./ShoppingCart";
 import NavigationBar from "./NavigationBar";
@@ -101,7 +100,6 @@ const App = () => {
             quantity: 0,
         },
     ];
-
     const addToCart = (newItem, quantity) => {
         if (quantity <= 0 || quantity > 100 || quantity[0] === "0") return;
         for (let i = 0; i < quantity; i++) {
@@ -110,14 +108,13 @@ const App = () => {
     };
     return (
         <Container className='cont'>
-            <NavigationBar />
+        
             <BrowserRouter>
+            <NavigationBar />
                 <Routes>
-                    <Route index path='' element={<Homepage />} />
-                    <Route path='/shop' element={<Shop  items={items} cart={cart} addToCart={addToCart} />} />
-                    <Route path='/shop/cart' element={<ShoppingCart cart={cart} />} />
-                    
-                    
+                
+                    <Route path='/' element={<Shop  items={items} cart={cart} addToCart={addToCart} />} />
+                    <Route path='/cart' element={<ShoppingCart cart={cart} />} />
                 </Routes>
             </BrowserRouter>
         </Container>
