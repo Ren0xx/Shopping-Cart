@@ -6,7 +6,7 @@ const Shop = (props) => {
    
     return (
         <>
-            <ShopItems items={props.items} addToCart={props.addToCart} />
+            <ShopItems items={props.items} addToCart={props.addToCart} setData={props.setData}/>
             <ShoppingCartIcon cart={props.cart}  />
             
         </>

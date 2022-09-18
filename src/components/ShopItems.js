@@ -1,18 +1,30 @@
-import React from "react";
-
+import React, { useState } from "react";
 import "../styles/style.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const ShopItems = (props) => {
+    const updateState = (value, item) => {
+        if (value <= 0) return;
+        const newState = quantities.map((q, ind) => {
+          if (item.id === ind + 1) {
+            return {...q, quantity: value};
+          }
+          return q;
+        });
+
+        setQuantities(newState);
+      };
+
+    const [quantities, setQuantities] = useState(Array(16).fill({quantity: 0}));
     return (
         <div className='cards'>
             {props.items.map((item, index) => {
                 return (
-                    <div key={index} className='card'>
-                        <h5>{item.name}</h5>
-                        <img src={item.img} alt='...' />
-                        <h5>{item.price}</h5>
+                    <div key={item.id} className='card'>
+                        <h5>{item.title}</h5>
+                        <img src={item.image} alt='...' />
+                        <h5>{item.price.toFixed(2)}$</h5>
 
                         <Form>
                             <Form.Group>
@@ -21,21 +33,17 @@ const ShopItems = (props) => {
                                     placeholder='Enter Amount of Items'
                                     type='number'
                                     min='0'
-                                    quantity={item.quantity}
-                                    onChange={(e) => {
-                                        item.quantity = e.target.value;
-                                    }}
-                                    onFocus={(e) => {
-                                        item.quantity = e.target.value;
-                                    }}
+                                    onChange={(e) => {updateState(e.target.value, item);}}
                                 />
                                 <Form.Text muted>
                                     Choose how many items you want to buy.
                                 </Form.Text>
                             </Form.Group>
                             <Button
-                                value={item.quantity}
-                                onClick={() => props.addToCart(item, item.quantity)}
+                                value={quantities[index].quantity}
+                                onClick={(e) => {
+                                    props.addToCart(item, e.target.value);
+                                }}
                                 size='sm'>
                                 Add to Cart
                             </Button>
