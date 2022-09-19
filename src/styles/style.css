@@ -14,6 +14,7 @@
 .cards{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 2em;
 }
 .card > img{
@@ -26,4 +27,12 @@
     width: 250px;
     padding: 5px;
     gap: 1.5em;
+}
+
+.cart-bottom-nav{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 20px !important;
+    background-color: hsla(210, 15%, 5%, 0.3);
 }
