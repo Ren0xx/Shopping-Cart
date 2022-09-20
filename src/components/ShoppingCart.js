@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import "../styles/style.css";
 
@@ -27,16 +28,40 @@ const ShoppingCart = (props) => {
                 <h1 className='text-light'>Your cart is empty.</h1>
             )}
             <div className='cards'>
-                {props.cart.map(cartItem => {
+                {props.cart.map((cartItem) => {
                     return (
                         <div className='card' key={cartItem[0].id}>
                             <h2>{cartItem[0].title}</h2>
                             <img src={cartItem[0].image} alt='...' />
                             <h2> {cartItem[0].price.toFixed(2)}$</h2>
-                            <p>Quantity: {cartItem[1]}</p>
-                            <Button variant="outline-danger" 
-                                onClick={() => props.remove(cartItem)}
-                            >Remove</Button>
+                            <ButtonGroup size="sm">
+                                <Button
+                                    variant='outline-danger'
+                                    onClick={() => {
+                                        if (!(cartItem[1] === 1)) {
+                                            props.changeQuantity(
+                                                cartItem,
+                                                false
+                                            );
+                                        }
+                                    }}>
+                                    -
+                                </Button>
+                                <Button disabled variant="dark"> {cartItem[1]}</Button>
+                                <Button
+                                    variant='outline-success'
+                                    onClick={() =>
+                                        props.changeQuantity(cartItem, true)
+                                    }>
+                                    +
+                                </Button>
+
+                            </ButtonGroup>
+                                <Button
+                                    variant='outline-danger'
+                                    onClick={() => props.remove(cartItem)}>
+                                    Remove
+                                </Button>
                         </div>
                     );
                 })}

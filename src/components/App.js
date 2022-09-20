@@ -1,17 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Shop from "./Shop";
 import ShoppingCart from "./ShoppingCart";
 import NavigationBar from "./NavigationBar";
 import Container from "react-bootstrap/Container";
-import autoAnimate from '@formkit/auto-animate'
 
 const App = () => {
     const [cart, setCart] = useState([]);
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
 
     useEffect(() => {
         const getData = async () => {
@@ -61,6 +59,18 @@ const App = () => {
         );
     };
 
+    const changeQuantity = (item, increase) => {
+        const newState = cart.map((cartItem) => {
+            let valueToAdd = (increase ) ? 1 : -1;
+            if (cartItem === item) {
+                cartItem[1] = parseInt(cartItem[1]) + parseInt(valueToAdd);
+            }
+            return cartItem;
+        });
+
+        setCart(newState);
+    };
+
     return (
         <Container className='cont'>
             <BrowserRouter>
@@ -92,7 +102,7 @@ const App = () => {
                                 <ShoppingCart
                                     cart={cart}
                                     remove={removeFromCart}
-                                    
+                                    changeQuantity={changeQuantity}
                                 />
                             )
                         }
