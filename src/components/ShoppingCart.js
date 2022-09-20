@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 
 import "../styles/style.css";
 
@@ -26,13 +27,16 @@ const ShoppingCart = (props) => {
                 <h1 className='text-light'>Your cart is empty.</h1>
             )}
             <div className='cards'>
-                {props.cart.map((cartItem, index) => {
+                {props.cart.map(cartItem => {
                     return (
-                        <div className='card' key={index}>
+                        <div className='card' key={cartItem[0].id}>
                             <h2>{cartItem[0].title}</h2>
                             <img src={cartItem[0].image} alt='...' />
-                            <h2> {cartItem[0].price}$</h2>
-                            <p>quantity: {cartItem[1]}</p>
+                            <h2> {cartItem[0].price.toFixed(2)}$</h2>
+                            <p>Quantity: {cartItem[1]}</p>
+                            <Button variant="outline-danger" 
+                                onClick={() => props.remove(cartItem)}
+                            >Remove</Button>
                         </div>
                     );
                 })}

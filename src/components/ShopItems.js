@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const ShopItems = (props) => {
+
+    const [quantities, setQuantities] = useState(Array(16).fill({quantity: 0}));
+
     /**
      * If the value is less than or equal to zero, return. Otherwise, map through the quantities array
      * and return a new object with the quantity property set to the value passed in.
@@ -23,7 +26,6 @@ const ShopItems = (props) => {
         setQuantities(newState);
       };
 
-    const [quantities, setQuantities] = useState(Array(16).fill({quantity: 0}));
     return (
         <div className='cards'>
             {props.items.map((item, index) => {
@@ -39,7 +41,7 @@ const ShopItems = (props) => {
                                     size='sm'
                                     placeholder='Enter Amount of Items'
                                     type='number'
-                                    min='0'
+                                    min='1'
                                     max="99"
                                     onChange={(e) => {updateQuantityState(e.target.value, item);}}
                                 />
