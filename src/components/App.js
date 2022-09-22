@@ -42,8 +42,40 @@ const App = () => {
      * @param quantity - the quantity of the item the user wants to add to the cart
      * @returns the new state of the cart.
      */
+    /**
+     * If the cart is empty, return. If the cart is not empty, map through the cart and if the cart
+     * item id matches the item id, return the cart item with the quantity added to the quantity. If
+     * the cart item id does not match the item id, return the cart item.
+     * @param item - {
+     * @param quantity - 1
+     * @returns An array of objects.
+     */
+    const changeCartIfHasDuplicate = (item, quantity) => {
+        if (cart === []) return;
+        const newCart = cart.map((cartItem) => {
+            if (cartItem[0].id === item.id) {
+                return {
+                    ...cartItem,
+                    1: parseInt(cartItem[1]) + parseInt(quantity),
+                };
+            }
+            return cartItem;
+        });
+        setCart(newCart);
+    };
     const addToCart = (newItem, quantity) => {
         if (quantity <= 0 || quantity > 100 || quantity[0] === "0") return;
+
+        let haveDuplicate = false;
+        cart.forEach(cartItem => {
+            if (cartItem[0].id === newItem.id) {
+                haveDuplicate = true;
+            }
+        })
+        if (haveDuplicate) {
+            changeCartIfHasDuplicate(newItem, quantity);
+            return;
+        }
         setCart((cart) => [...cart, [newItem, quantity]]);
     };
 
@@ -61,7 +93,7 @@ const App = () => {
 
     const changeQuantity = (item, increase) => {
         const newState = cart.map((cartItem) => {
-            let valueToAdd = (increase ) ? 1 : -1;
+            let valueToAdd = increase ? 1 : -1;
             if (cartItem === item) {
                 cartItem[1] = parseInt(cartItem[1]) + parseInt(valueToAdd);
             }

@@ -28,8 +28,10 @@
 
 .cart-bottom-nav{
     color: #fff;
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 75vw;
     padding: 20px !important;
     background-color: hsla(210, 15%, 5%, 0.3);
 }

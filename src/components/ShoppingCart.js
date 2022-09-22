@@ -30,7 +30,7 @@ const ShoppingCart = (props) => {
             <div className='cards'>
                 {props.cart.map((cartItem) => {
                     return (
-                        <div className='card' key={cartItem[0].id}>
+                        <div className='card' >
                             <h2>{cartItem[0].title}</h2>
                             <img src={cartItem[0].image} alt='...' />
                             <h2> {cartItem[0].price.toFixed(2)}$</h2>
@@ -69,6 +69,7 @@ const ShoppingCart = (props) => {
             {props.cart.length && (
                 <Navbar fixed='bottom' className='cart-bottom-nav'>
                     <h3>Subtotal: {cost.toFixed(2)}$</h3>
+                    <Button>Checkout</Button>
                 </Navbar>
             )}
         </>
