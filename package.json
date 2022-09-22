@@ -2,7 +2,7 @@
   "name": "shopping-cart",
   "version": "0.1.0",
   "private": true,
-  "homepage": "  https://github.com/Ren0xx/Shopping-Cart",
+  "homepage": "https://ren0xx.github.io/Shopping-Cart/",
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.3",
     "@testing-library/jest-dom": "^5.16.5",

@@ -14,8 +14,6 @@
     
 // ];
 
-
-
 // describe("Shop items", () => {
 //     it("checks if input is correct", () => {
 //         const addMock = jest.fn();

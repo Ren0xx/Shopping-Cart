@@ -8,7 +8,7 @@ const NavigationBar = () => {
     return (
             <Navbar bg='dark' variant='dark' fixed='top' className="justify-content-center">
                 <Nav size='sm' fill>
-                    <LinkContainer to='/' >
+                    <LinkContainer to='/Shopping-Cart' >
                         <Nav.Link className="text-light"> 
                         Go to Shop
 

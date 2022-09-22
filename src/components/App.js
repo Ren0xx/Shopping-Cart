@@ -115,7 +115,7 @@ const App = () => {
                 )}
                 <Routes>
                     <Route
-                        path='/'
+                        path='/Shopping-Cart'
                         element={
                             !loading && (
                                 <Shop
